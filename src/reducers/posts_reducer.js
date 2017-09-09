@@ -11,6 +11,8 @@ export default function(state = {}, action){
 			// newState[post.id] = post
 			// return newState;
 			return { ...state, [action.payload.data.id]: action.payload.data }
+		case actionTypes.DELETE_POST:
+			return _.omit(state, action.payload)
 		default:
 			return state;
 	}
