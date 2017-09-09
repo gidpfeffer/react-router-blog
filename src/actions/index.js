@@ -15,7 +15,7 @@ export function fetchPosts(){
 
 export function createPost(values, redirect_callback){
 	const request = axios.post(`${ROOT_URL}/posts${API_KEY}`, values)
-		.then(() => redirect_callback())
+		.then(() => redirect_callback());
 
 	return {
 		type: actionTypes.CREATE_POST,
@@ -29,5 +29,15 @@ export function fetchPost(id){
 	return {
 		type: actionTypes.FETCH_POST,
 		payload: request
+	};
+}
+
+export function deletePost(id, redirect_callback){
+	const request = axios.delete(`${ROOT_URL}/posts/${id}${API_KEY}`)
+		.then(() => redirect_callback())
+
+	return {
+		type: actionTypes.DELETE_POST,
+		payload: id
 	};
 }
