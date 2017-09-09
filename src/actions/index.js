@@ -22,3 +22,12 @@ export function createPost(values, redirect_callback){
 		payload: request
 	};
 }
+
+export function fetchPost(id){
+	const request = axios.get(`${ROOT_URL}/posts/${id}${API_KEY}`);
+
+	return {
+		type: actionTypes.FETCH_POST,
+		payload: request
+	};
+}
